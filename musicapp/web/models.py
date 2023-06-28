@@ -40,7 +40,7 @@ class Album(models.Model):
     MUSICS = (
         ('POP MUSIC', 'POP MUSIC'),
         ('Jazz Music', 'JAZZ MUSIC'),
-        ('R&B Music', 'POP MUSIC'),
+        ('R&B Music', 'R&B Music'),
         ('Rock Music', 'ROCK MUSIC'),
         ('Country Music', 'COUNTRY MUSIC'),
         ('Dance Music', 'DANCE MUSIC'),
@@ -49,6 +49,7 @@ class Album(models.Model):
     )
     album_name = models.CharField(
         max_length=30,
+        verbose_name='Album Name',
         null=False,
         blank=False,
         unique=True,
@@ -71,6 +72,7 @@ class Album(models.Model):
     image_url = models.URLField(
         null=False,
         blank=False,
+        verbose_name='Image URL',
     )
     price = models.FloatField(
         null=False,
@@ -79,3 +81,6 @@ class Album(models.Model):
             MinValueValidator(0.0),
         ),
     )
+
+    class Meta:
+        ordering = ('pk',)
